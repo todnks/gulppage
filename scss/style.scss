@@ -1,0 +1,406 @@
+@import "./function";
+
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    color: inherit;
+    box-sizing: border-box;
+}
+
+html, body {
+    overflow-x: hidden;
+    font-family: "Malgun Gothic";
+}
+.article__title{
+    font-size: 30px;
+    color: $titlecolor;
+    text-align: center;
+    margin-top: 110px;
+}
+.input-container {
+    &--radio {
+        position: absolute;
+        height: 50px;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        @include flex (space-between, center, column);
+    }
+}
+.hidden-menu{
+    &__nav{
+        position: fixed;
+        right: 0;
+        width: 390px;
+        height: 100%;
+        z-index: 10;
+        background: rgba($color,0.6);
+        color: #fff;
+        text-align: center;
+        padding-top: 150px;
+        transition: 0.5s;
+        transform: translateX(100%);
+    }
+    &__item{
+        margin-bottom: 41px;
+        font-size: 25px;
+    }
+    &__button{
+        position: fixed;
+        z-index: 11;
+        right: 0;
+        top: 74px;
+        width: 60px;
+        height: 60px;
+        background: rgba(0, 0, 0, 0.6);
+        text-align: center;
+        padding: 14px;
+    }
+    &__button--active{
+        display: none;
+    }
+}
+.header {
+    width: 1140px;
+    color: $white;
+    @include flex ();
+    margin: 0 auto;
+    margin-top: 40px;
+    z-index: 999;
+    position: absolute;
+    top : 0;
+    left : 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    &__nav {
+        @include flex ();
+    }
+    &__item {
+        margin-left: 30px;
+    }
+}
+
+.visual {
+    width: 1920px;
+    height: 700px;
+    position: relative;
+    left: 0;
+    top: 0;
+    @include flex (center, flex-end);
+    &__slide {
+        position: absolute;
+        left: 0;
+        top: 0;
+        display: flex;
+        transition: .4s;
+        z-index: 1;
+    }
+    &__content {
+        width: 1000px;
+        height: 150px;
+        background: rgba(0, 0, 0, 0.3);
+        position: relative;
+        z-index: 2;
+        bottom: 160px;
+        padding: 30px 20px 30px 80px;
+        box-sizing: border-box;
+        color: $white;
+        &::before {
+            content: "";
+            display: inline-block;
+            width: 5px;
+            height: 100%;
+            background: $color; 
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        &__title {
+            font-size: 40px;
+            font-weight: 900;
+            font-family: $segoe;
+            color: $white;
+            font-style: italic;
+            width: 260px;
+            line-height: 34px;
+            margin-bottom: 5px;
+        }
+        &__subtitle {
+            opacity: .8;
+        }
+    }
+}
+.article-welcom{
+    text-align: center;
+    height: 404px;
+    &__text{
+        width: 700px;
+        margin: 0 auto;
+        margin-top: 40px;
+        font-size: 18px;
+        color: $darkLight;
+        margin-bottom: 30px;
+    }
+    &-button{
+        width: 298px;
+        margin: 0 auto;
+        @include flex();
+    }
+    &__button{
+        width: 140px;
+        height: 35px;
+        line-height: 35px;
+        position: relative;
+        text-align: center;
+        overflow: hidden;
+    }
+    &__button:before{
+        content: '';
+        width: 136px;
+        height: 31px;
+        border: 2px solid #a1a1a1;
+        position: absolute;
+        left: 0;
+    }
+    &__button:after{
+        content: '';
+        width: 13px;
+        height: 13px;
+        background: #f7941d;
+        border: 3px solid $white;
+        position:absolute;
+        left: 0;
+        top: 0;
+        transform: translateY(-10px) translateX(-10px) rotate(-45deg);
+    }
+}
+.article-visual{
+    height: 450px;
+    position: relative;
+    align-items: center;
+    &:after{
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba($color, 0.45);
+    }
+    &__back{
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+    }
+    &__list{
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        max-width: 1140px;
+        margin: 0 auto;
+        transform: translateY(106px);
+        @include flex();
+        text-align: center;
+    }
+    &--color-white{
+        color: $white;
+    }
+    &__item{
+        width: 100%;
+        max-width: 150px;
+        color: $white;
+    }
+    &__imgbox{
+        height: 150px;
+        border: 5px solid $white;
+        border-radius: 100%;
+        padding: 30px;
+        margin-bottom: 40px;
+    }
+    &__number{
+        font-size: 60px;
+    }
+    &__text{
+        font-size: 20px;
+    }
+}
+.article-testimonials{
+    height: 641px;
+    position: relative;
+    &__list{
+        width: 100%;
+        max-width: 1140px;
+        @include flex();
+        text-align: center;
+        margin: 0 auto;
+        margin-top: 76px;
+    }
+    &__item{
+        width: 262px;
+    }
+    &__imgbox{
+        height: 200px;
+        position: relative;
+        margin-bottom: 22px;
+        &:before{
+            content: '';
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            background: rgba($color, 0.8);
+        }
+        &:after{
+            content: '';
+            width: 25px;
+            height: 25px;
+            position: absolute;
+            right: 10px;
+            bottom: 15px;
+            background: url("../img/scale.png") no-repeat;
+        }
+    }
+    &__text{
+        font-size: 18px;
+        color: $darkLight;
+        margin-bottom: 18px;
+    }
+    &__name{
+        color: #333;
+    }
+}
+.footer-head{
+    width: 100%;
+    height: 100px;
+    background: $color;
+    &__list{
+        width: 100%;
+        height: 100px;
+        max-width: 1140px;
+        margin: 0 auto;
+        @include flex();
+    }
+    &__title{
+        color: #fff;
+        font-size: 30px;
+    }
+    &__input{
+        @include flex();
+        width: 693px;
+    }
+    &__Email{
+        width: 400px;
+        height: 50px;
+        font-size: 25px;
+        padding-left: 22px;
+    }
+    &__button{
+        width: 276px;
+        height: 50px;
+        background: #656565;
+        font-size: 25px;
+        color: $white;
+    }
+}
+.footer-section{
+    position: relative;
+    height: 656px;
+    overflow: hidden;
+    &:before{
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 470px;
+        top: 0;
+        left: 0;
+        background: rgba($color, 0.45);
+        z-index: 2;
+    }
+    &__back{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        opacity: 0.45;
+        z-index: 1;
+    }
+    &__box{
+        width: 100%;
+        max-width: 1140px;
+        margin: 0 auto;
+        @include flex(space-between,none);
+        position: relative;
+        z-index: 3;
+        padding-top: 63px;
+    }
+    &__leftbox{
+        width: 270px;
+        color: $white;
+    }
+    &__textbox{
+        @include flex(none);
+        margin-bottom: 50px;
+    }
+    &__text{
+        margin-left: 20px;
+        font-size: 20px;
+    }
+    &__input-form{
+        input::placeholder{
+            color: #fff;
+        }
+    }
+    &__input-box{
+        @include flex();
+        width: 748px;
+        height: 50px;
+        margin-bottom: 20px;
+    }
+    &__input--back{
+        background: rgba($white, 0.3);
+        font-size: 25px;
+        padding-left: 25px;
+    }
+    &__input{
+        width: 360px;
+        height: 50px;
+        background: rgba($white, 0.3);
+        font-size: 25px;
+    }
+    &__email{
+        width: 100%;
+        height: 50px;
+        margin-bottom: 20px;
+    }
+    &__message{
+        width: 100%;
+        height: 122px;
+        margin-bottom: 20px;
+        padding-bottom: 50px;
+    }
+    &__button{
+        width: 100%;
+        height: 50px;
+        background: #656565;
+        color: #fff;
+        font-size: 25px;
+    }
+    &__bottom{
+        position: absolute;
+        width: 100%;
+        height: 186px;
+        bottom: 0;
+        text-align: center;
+        line-height: 186px;
+        color: #fff;
+        font-size: 20px;
+        z-index: 5;
+        background: rgba(0, 0, 0, 0.8);
+    }
+}
